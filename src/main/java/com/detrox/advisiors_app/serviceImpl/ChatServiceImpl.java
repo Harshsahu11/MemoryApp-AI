@@ -24,13 +24,13 @@ public class ChatServiceImpl implements ChatService {
     private Resource systemMessage;
 
     @Override
-    public String chat(String query) {
+    public String chat(String query,String userId) {
 
 
         return chatClient.prompt()
                 .user(query)
                 .advisors(advisor -> advisor
-                        .param(ChatMemory.CONVERSATION_ID, "user-123"))
+                        .param(ChatMemory.CONVERSATION_ID,userId))
                 .call()
                 .content();
 

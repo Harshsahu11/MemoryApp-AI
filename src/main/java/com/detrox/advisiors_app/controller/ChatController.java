@@ -16,8 +16,10 @@ public class ChatController {
     }
 
     @GetMapping("/chat")
-    public ResponseEntity<String> chat(@RequestParam String query) {
-        return ResponseEntity.ok(chatService.chat(query));
+    public ResponseEntity<String> chat(@RequestParam("query") String query,
+                                       @RequestHeader("userId") String userId
+    ) {
+        return ResponseEntity.ok(chatService.chat(query,userId));
     }
 
     @GetMapping("stream-chat")
